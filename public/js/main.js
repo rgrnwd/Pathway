@@ -13,4 +13,7 @@ window.backToMenu = function(){
 	pathway.init();
 }
 
+window.goToStep = function(event){
+	pathway.showStep(event.data.nextStep);
+}
 

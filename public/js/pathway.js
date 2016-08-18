@@ -1,75 +1,78 @@
 var $ = window.$;
+var tmPathway = require('./theoreticalModel.js');
+var caPathway = require('./contentAreas.js');
+var prPathway = require('./pressures.js');
 
 var thePathways = [];
-var pathwayId = 0;
+var stepId = 0;
+var selectedPathway;
 
 module.exports = {
 	init: init,
-	displayContent: displayContent
+	displayContent: displayContent,
+	showStep: showStep
 }
 
 function init(){
 	$('#menu').show();
 	$('#content-area').hide();
 	$('#back-button').hide();
+	buildPathways();
 }
 
 function displayContent(id){
 
-	pathwayId = id;
+	startPathway(id);
 
-	switch(pathwayId){
-		case 1:{
-			displayPageHeader('New Transfer Learning Opportunity',3000);
-			displayButtons(0);
-			break;
-		}
-		case 2:{
-			showPageContent('Content areas example');
-			break;
-		}
-		case 3:{
-			showPageContent('Fluid pressure to blood pressure example');
-			break;
-		}
-	}
 	$('#content-area').show();
 	$('#menu').hide();
 	$('#back-button').show();
 }
 
-function displayPageHeader(header, duration){
+function startPathway(id){
 
-	$("#user-info-header").text(header);
+	selectedPathway = thePathways[id-1];
+
+	$("#user-info-header").text(selectedPathway.header);
 	$('#user-info').hide();
+	displayButtons(0);
 
 	setTimeout(function() {
-	  	//$("#user-info-header").fadeOut().empty();
-	  	showPageContent('Use metacognition?');
-	  	displayButtons(1);
+	  	showStep(stepId);
 
-	}, duration);
+	}, 3000);
 }
-function showPageContent(text){
-	$('#user-info').text(text);
+function showStep(stepId){
+	var step = selectedPathway.steps[stepId];
+	$('#user-info').html(step.content + step.description);
 	$('#user-info').show();
+  	displayButtons(step.buttons, step);
 }
-function displayButtons(option){
+
+function displayButtons(option, step){
 	if (option==0) {
 		$('#tm-menu-yes').hide();
 		$('#tm-menu-no').hide();
 		$('#tm-menu-next').hide();
 	}
 	else if (option==1){
-		console.log('showing yes no buttons');
+		$('#tm-menu-yes').on('click', {nextStep: step.nextStep[0]}, goToStep);
+		$('#tm-menu-no').on('click', {nextStep: step.nextStep[1]}, goToStep);
 		$('#tm-menu-yes').show();
 		$('#tm-menu-no').show();
 		$('#tm-menu-next').hide();
 	}
-	else {
-		console.log('showing next button');
+	else if (option==2){
+		$('#tm-menu-next').on('click', {nextStep: step.nextStep[0]}, goToStep);
 		$('#tm-menu-yes').hide();
 		$('#tm-menu-no').hide();
 		$('#tm-menu-next').show();
 	}
+}
+
+function buildPathways(){
+	thePathways = [];
+	thePathways[0] = tmPathway.build();
+	thePathways[1] = caPathway.build();
+	thePathways[2] = prPathway.build();
 }
