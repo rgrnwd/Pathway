@@ -49,16 +49,22 @@ ul {
   padding-bottom: 10px; }
 
 .menu {
-  width: 33.3%;
-  margin-left: 30%;
-  min-width: 350px; }
+  width: 80%;
+  margin-left: 10%; }
+  @media screen and (max-width: 500px) {
+    .menu {
+      width: 100%;
+      margin-left: 5%; } }
   .menu .menu-button, .menu .back-button {
     background-color: orange; }
 
 #content-area {
-  width: 33.3%;
-  margin-left: 30%;
-  min-width: 350px; }
+  width: 80%;
+  margin-left: 10%; }
+  @media screen and (max-width: 500px) {
+    #content-area {
+      width: 100%;
+      margin-left: 5%; } }
   #content-area .information {
     min-height: 32px;
     margin-right: 0;
