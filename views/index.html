@@ -2,15 +2,35 @@
 <head>
     <title>Pathway</title>
     <link rel="stylesheet" type="text/css" href="styles/main.css"/>
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="js/q.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="main-browserified.js"></script>
 </head>
 <body class="content">
 
-<div class="menu">
-	<input id="menu-tm" class="button" type="button" value="Theoretical Model"/>
-	<input id="menu-ca" class="button" type="button" value="Content areas example"/>
-	<input id="menu-fpbp" class="button" type="button" value="Fluid pressure to blood pressure example"/>
-</div>
+	<div id="menu" class="menu">
+		<input id="menu-tm" class="button" type="button" value="Theoretical Model" onclick="showContent(1)"/>
+		<input id="menu-ca" class="button" type="button" value="Content areas example" onclick="showContent(2)"/>
+		<input id="menu-fpbp" class="button" type="button" value="Fluid pressure to blood pressure example" onclick="showContent(3)"/>
+	</div>
+
+	<div id="content-area">
+
+		<div id ="user-info-header" class="information">
+
+		</div>
+
+		<div id="user-info" class="information">
+			
+		</div>
+
+		<div class="user-actions">
+			<input id="tm-menu-next" class="button" type="button" value="Next"/>
+			<input id="tm-menu-yes" class="button" type="button" value="Yes"/>
+			<input id="tm-menu-no" class="button" type="button" value="No"/>
+		</div>
+
+	</div>
 
 </body>
 </html>

@@ -22,8 +22,8 @@ module.exports = function (grunt) {
                 ignore: ['cls-bluebird']
             },
             client: {
-                src: ['public/js/*.js'],
-                dest: 'public/main.js'
+                src: ['public/js/jquery.js', 'public/js/q.js','public/js/pathway.js','public/js/main.js'],
+                dest: 'public/main-browserified.js'
             }
         },
         develop: {

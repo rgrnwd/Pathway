@@ -1,37 +1,10 @@
+@import 'variables';
+@import 'common';
+@import 'menu';
+@import 'content';
 
 body {
 	padding-top: 20px;
   	font: 14px Helvetica, Arial, sans-serif;
   	height:100%;
-}
-
-.menu{
-	width:400px;
-	input{
-  		font: 14px Helvetica, Arial, sans-serif;
-		height: 32px;
-	    margin-right: 0;
-	    vertical-align: middle;
-	    border-radius: 3px;
-	    border:none;
-	    line-height: 20px;
-	    margin: 2px;
-	    box-sizing: border-box;
-	    -moz-box-sizing: border-box;
-	    -webkit-box-sizing: border-box;
-	    opacity: 0.8;
-	    background-color:#ccf2ff;
-	}
-	
-	.button {
-		display:block;
-		width:80%;
-	    padding: 0px 24px 0 10px;
-	    margin: 15px 25px;
-	    border-radius:3px;
-	    cursor:pointer;
-	}
-	.button:hover{
-	    transform: scale(1.1); 
-	}
 }
