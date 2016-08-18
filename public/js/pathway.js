@@ -1,5 +1,6 @@
 var $ = window.$;
 
+var thePathways = [];
 var pathwayId = 0;
 
 module.exports = {
@@ -10,6 +11,7 @@ module.exports = {
 function init(){
 	$('#menu').show();
 	$('#content-area').hide();
+	$('#back-button').hide();
 }
 
 function displayContent(id){
@@ -33,6 +35,7 @@ function displayContent(id){
 	}
 	$('#content-area').show();
 	$('#menu').hide();
+	$('#back-button').show();
 }
 
 function displayPageHeader(header, duration){
@@ -41,7 +44,7 @@ function displayPageHeader(header, duration){
 	$('#user-info').hide();
 
 	setTimeout(function() {
-	  	$("#user-info-header").fadeOut().empty();
+	  	//$("#user-info-header").fadeOut().empty();
 	  	showPageContent('Use metacognition?');
 	  	displayButtons(1);
 
