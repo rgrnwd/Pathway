@@ -38,14 +38,14 @@ function startPathway(id){
 
 	selectedPathway = thePathways[id-1];
 
-	$("#user-info-header").text(selectedPathway.header);
+	$("#user-info-header").html('<h1>' + selectedPathway.header + '</h1>');
 	$('#user-info').hide();
 	displayButtons(0);
 
 	setTimeout(function() {
 	  	showStep(stepId);
 
-	}, 3000);
+	}, 1000);
 }
 function showStep(stepId){
 	var step = selectedPathway.steps[stepId];
@@ -56,7 +56,7 @@ function showStep(stepId){
 
 function getStepInfo(step){
 	return '<div class="information">' + 
-				step.content + 
+				'<h2>' + step.content + '</h2>' +
 				step.description + 
 			'</div>';
 }
