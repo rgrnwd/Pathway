@@ -9,4 +9,8 @@ window.onload = function() {
 
 };
 
+window.backToMenu = function(){
+	pathway.init();
+}
+
 

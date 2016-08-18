@@ -179,6 +179,10 @@ window.onload = function() {
 
 };
 
+window.backToMenu = function(){
+	pathway.init();
+}
+
 
 
 },{"./pathway.js":4}],4:[function(require,module,exports){
