@@ -56,10 +56,13 @@ function showStep(stepId){
 
 function getStepInfo(step){
 	var divId = "pathway" + selectedPathway.id + "-step" + step.id;
+	var collapse = '';
+	if (step.description)
+		collapse = '<img class="collapse" src="/images/plus.png" onclick="$(\'#'+divId+'\').slideToggle(\'slow\');"/>';
 
 	return '<div class="information">' + 
 				'<h2>' + step.header + '</h2>' +
-				'<img class="collapse" src="/images/plus.png" onclick="$(\'#'+divId+'\').slideToggle(\'slow\');"/>' + 
+				collapse +
 				'<div class="collapsible-desc" id="'+divId+'">' + step.description + '</div>' +
 				'<div class="step-content">' + step.content + '</div>' +
 			'</div>';
