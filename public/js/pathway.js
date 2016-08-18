@@ -62,6 +62,9 @@ function getStepInfo(step){
 }
 
 function displayButtons(option, step){
+	$('#menu-next').off('click');
+	$('#menu-yes').off('click');
+	$('#menu-no').off('click');
 	if (option==0) {
 		$('#menu-yes').hide();
 		$('#menu-no').hide();
@@ -75,7 +78,11 @@ function displayButtons(option, step){
 		$('#menu-next').hide();
 	}
 	else if (option==2){
-		$('#menu-next').on('click', {nextStep: step.nextStep[0]}, goToStep);
+		if (step.nextStep)
+			$('#menu-next').on('click', {nextStep: step.nextStep[0]}, goToStep);
+		else
+			$('#menu-next').on('click', backToMenu);
+
 		$('#menu-yes').hide();
 		$('#menu-no').hide();
 		$('#menu-next').show();
