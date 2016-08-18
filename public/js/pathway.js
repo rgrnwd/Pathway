@@ -55,9 +55,13 @@ function showStep(stepId){
 }
 
 function getStepInfo(step){
+	var divId = "pathway" + selectedPathway.id + "-step" + step.id;
+
 	return '<div class="information">' + 
-				'<h2>' + step.content + '</h2>' +
-				step.description + 
+				'<h2>' + step.header + '</h2>' +
+				'<img class="collapse" src="/images/plus.png" onclick="$(\'#'+divId+'\').slideToggle(\'slow\');"/>' + 
+				'<div class="collapsible-desc" id="'+divId+'">' + step.description + '</div>' +
+				'<div class="step-content">' + step.content + '</div>' +
 			'</div>';
 }
 

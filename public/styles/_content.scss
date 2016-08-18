@@ -25,6 +25,21 @@
 	    padding: 5px 24px 0 10px;
 	    margin: 15px 25px;
 	    text-align: center;
+	    position: relative;
+
+	    img.collapse {
+		    width: 15px;
+		    position: absolute;
+		    top: 30;
+		    left: 10;
+		    cursor: hand;
+		}
+	    .collapsible-desc {
+		    height: 30px;
+		}
+		.step-content {
+		    padding-top: 8px;
+		}
     }
     .information.header{
 	    background-color:$info_header_background;	

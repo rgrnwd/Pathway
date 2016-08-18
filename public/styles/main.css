@@ -81,7 +81,18 @@ ul {
     width: 80%;
     padding: 5px 24px 0 10px;
     margin: 15px 25px;
-    text-align: center; }
+    text-align: center;
+    position: relative; }
+    #content-area .information img.collapse {
+      width: 15px;
+      position: absolute;
+      top: 30;
+      left: 10;
+      cursor: hand; }
+    #content-area .information .collapsible-desc {
+      height: 30px; }
+    #content-area .information .step-content {
+      padding-top: 8px; }
   #content-area .information.header {
     background-color: #ff99ff; }
 
