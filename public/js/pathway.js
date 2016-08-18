@@ -14,6 +14,11 @@ module.exports = {
 }
 
 function init(){
+	$('#user-info-container').empty();
+	$('#menu-next').off('click');
+	$('#menu-yes').off('click');
+	$('#menu-no').off('click');
+
 	$('#menu').show();
 	$('#content-area').hide();
 	$('#back-button').hide();
@@ -44,29 +49,36 @@ function startPathway(id){
 }
 function showStep(stepId){
 	var step = selectedPathway.steps[stepId];
-	$('#user-info').html(step.content + step.description);
-	$('#user-info').show();
+	$('#user-info-container').html($('#user-info-container').html() + getStepInfo(step));
+	$('#user-info-container').show();
   	displayButtons(step.buttons, step);
+}
+
+function getStepInfo(step){
+	return '<div class="information">' + 
+				step.content + 
+				step.description + 
+			'</div>';
 }
 
 function displayButtons(option, step){
 	if (option==0) {
-		$('#tm-menu-yes').hide();
-		$('#tm-menu-no').hide();
-		$('#tm-menu-next').hide();
+		$('#menu-yes').hide();
+		$('#menu-no').hide();
+		$('#menu-next').hide();
 	}
 	else if (option==1){
-		$('#tm-menu-yes').on('click', {nextStep: step.nextStep[0]}, goToStep);
-		$('#tm-menu-no').on('click', {nextStep: step.nextStep[1]}, goToStep);
-		$('#tm-menu-yes').show();
-		$('#tm-menu-no').show();
-		$('#tm-menu-next').hide();
+		$('#menu-yes').on('click', {nextStep: step.nextStep[0]}, goToStep);
+		$('#menu-no').on('click', {nextStep: step.nextStep[1]}, goToStep);
+		$('#menu-yes').show();
+		$('#menu-no').show();
+		$('#menu-next').hide();
 	}
 	else if (option==2){
-		$('#tm-menu-next').on('click', {nextStep: step.nextStep[0]}, goToStep);
-		$('#tm-menu-yes').hide();
-		$('#tm-menu-no').hide();
-		$('#tm-menu-next').show();
+		$('#menu-next').on('click', {nextStep: step.nextStep[0]}, goToStep);
+		$('#menu-yes').hide();
+		$('#menu-no').hide();
+		$('#menu-next').show();
 	}
 }
 
