@@ -17,3 +17,10 @@ window.goToStep = function(event){
 	pathway.showStep(event.data.nextStep);
 }
 
+window.expandDescription = function(divId, imgId){
+	$('#'+divId).slideToggle('slow');
+	if($('#'+imgId).attr('src') == '/images/maximise.png')
+		$('#'+imgId).attr('src','/images/minimise.png');
+	else
+		$('#'+imgId).attr('src','/images/maximise.png');
+}

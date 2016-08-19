@@ -256,7 +256,13 @@ window.goToStep = function(event){
 	pathway.showStep(event.data.nextStep);
 }
 
-
+window.expandDescription = function(divId, imgId){
+	$('#'+divId).slideToggle('slow');
+	if($('#'+imgId).attr('src') == '/images/maximise.png')
+		$('#'+imgId).attr('src','/images/minimise.png');
+	else
+		$('#'+imgId).attr('src','/images/maximise.png');
+}
 },{"./pathway.js":5}],5:[function(require,module,exports){
 var $ = window.$;
 var tmPathway = require('./theoreticalModel.js');
@@ -316,9 +322,11 @@ function showStep(stepId){
 
 function getStepInfo(step){
 	var divId = "pathway" + selectedPathway.id + "-step" + step.id;
+	var imgId = "img" + selectedPathway.id + "-step" + step.id;
 	var collapse = '';
 	if (step.description)
-		collapse = '<img class="collapse" src="/images/plus.png" onclick="$(\'#'+divId+'\').slideToggle(\'slow\');"/>';
+		collapse = '<img id="'+ imgId +'" class="collapse" src="/images/minimise.png" '+
+					'onclick="expandDescription(\''+divId + '\',\'' + imgId+'\')"/>';
 
 	return '<div class="information">' + 
 				'<h2>' + step.header + '</h2>' +
