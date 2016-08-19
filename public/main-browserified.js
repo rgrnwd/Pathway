@@ -258,6 +258,7 @@ window.goToStep = function(event){
 
 window.expandDescription = function(divId, imgId){
 	$('#'+divId).slideToggle('slow');
+	
 	if($('#'+imgId).attr('src') == '/images/maximise.png')
 		$('#'+imgId).attr('src','/images/minimise.png');
 	else
@@ -325,7 +326,7 @@ function getStepInfo(step){
 	var imgId = "img" + selectedPathway.id + "-step" + step.id;
 	var collapse = '';
 	if (step.description)
-		collapse = '<img id="'+ imgId +'" class="collapse" src="/images/minimise.png" '+
+		collapse = '<img id="'+ imgId +'" class="collapse" src="/images/maximise.png" '+
 					'onclick="expandDescription(\''+divId + '\',\'' + imgId+'\')"/>';
 
 	return '<div class="information">' + 

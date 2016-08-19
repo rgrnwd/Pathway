@@ -19,6 +19,7 @@ window.goToStep = function(event){
 
 window.expandDescription = function(divId, imgId){
 	$('#'+divId).slideToggle('slow');
+	
 	if($('#'+imgId).attr('src') == '/images/maximise.png')
 		$('#'+imgId).attr('src','/images/minimise.png');
 	else

@@ -28,14 +28,15 @@
 	    position: relative;
 
 	    img.collapse {
-		    width: 15px;
+		    width: 25px;
 		    position: absolute;
-		    top: 30;
+		    top: 20;
 		    left: 10;
 		    cursor: hand;
 		}
 	    .collapsible-desc {
 		    height: 30px;
+		    display: none;
 		}
 		.step-content {
 		    padding-top: 8px;
