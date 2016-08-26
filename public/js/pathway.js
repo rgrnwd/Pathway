@@ -1,7 +1,7 @@
 var $ = window.$;
-var tmPathway = require('./theoreticalModel.js');
-var caPathway = require('./contentAreas.js');
-var prPathway = require('./pressures.js');
+var pathwayContents = [require('./pathways-content/theoreticalModel.js'),
+					   require('./pathways-content/contentAreas.js'),
+					   require('./pathways-content/pressures.js')];
 
 var thePathways = [];
 var stepId = 0;
@@ -128,7 +128,12 @@ function displayButtons(option, step){
 
 function buildPathways(){
 	thePathways = [];
-	thePathways[0] = tmPathway.build();
-	thePathways[1] = caPathway.build();
-	thePathways[2] = prPathway.build();
+
+	pathwayContents.forEach(function(pathway, index){
+		thePathways[index] = pathway.build();
+	});
+	
+	// thePathways[0] = tmPathway.build();
+	// thePathways[1] = caPathway.build();
+	// thePathways[2] = prPathway.build();
 }

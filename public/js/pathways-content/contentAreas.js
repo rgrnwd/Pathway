@@ -9,15 +9,16 @@ function buildContentAreasExample(){
 		{
 			id:0,
 			header:'Use metacognition?',
-			description: '',
+			description: 'This is some example description',
 			content: '',
 			buttons:1,
-			nextStep:[1,2]
+			nextStep:[1,2],
+			changeArrows: true
 		},
 		{
 			id:1,
 			header:'Metacognition',
-			description: '',
+			description: 'This is some example description',
 			content: '<h3>Awareness of</h3>' + 
 					'<ul><li>What do I know that I know that might relate to my current situational demands?</li>'+
 					'<li>What do I know that I can do that might relate to my current situational demands?</li></ul>'+
@@ -26,18 +27,20 @@ function buildContentAreasExample(){
 					'<li>How is it working?</li>'+
 					'<li>Do I need to modify my choice?</li></ul>',
 			buttons:2,
+			displayArrows: true,
 			nextStep:[2]
 		},
 		{
 			id:2,
 			header:'Personal Repertoire',
-			description: '',
+			description: 'This is some example description',
 			content: '<h3>Course Context</h3>' + 
 					'<span>Content Skills</span>'+
 					'<h3>Personal Repertoire</h3>'+
 					'<span>Life experience Skills Background Employment</span>',
 			buttons:2,
-			nextStep:[3]
+			nextStep:[3],
+			displayArrows: true
 		},
 		{
 			id:3,
@@ -45,6 +48,8 @@ function buildContentAreasExample(){
 			description: '',
 			content: '',
 			buttons:2,
+			displayArrows: true,
+			doubleArrows: true,
 			nextStep:[4]
 		},
 		{
@@ -53,6 +58,7 @@ function buildContentAreasExample(){
 			description: '',
 			content: '',
 			buttons:1,
+			displayArrows: true,
 			nextStep:[5,0]
 		},
 		{
@@ -60,6 +66,7 @@ function buildContentAreasExample(){
 			header:'Move on to next task',
 			description: '',
 			content: '',
+			displayArrows: true,
 			buttons:2,
 		}
 		]
