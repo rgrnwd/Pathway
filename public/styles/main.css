@@ -80,7 +80,7 @@ ul {
     background-color: #80ffe5;
     width: 80%;
     padding: 5px 24px 0 10px;
-    margin: 15px 25px;
+    margin: 5px 25px;
     text-align: center;
     position: relative; }
     #content-area .information img.collapse {
@@ -96,6 +96,15 @@ ul {
       padding-top: 8px; }
   #content-area .information.header {
     background-color: #ff99ff; }
+  #content-area .arrows {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    #content-area .arrows img.arrow-img {
+      width: 50px; }
+    #content-area .arrows img.arrow-img.hidden {
+      display: none; }
 
 body {
   padding-top: 20px;

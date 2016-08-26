@@ -253,12 +253,12 @@ window.backToMenu = function(){
 }
 
 window.goToStep = function(event){
-	pathway.showStep(event.data.nextStep);
+	pathway.showStep(event.data.nextStep, event.data.changeArrows);
 }
 
 window.expandDescription = function(divId, imgId){
 	$('#'+divId).slideToggle('slow');
-	
+
 	if($('#'+imgId).attr('src') == '/images/maximise.png')
 		$('#'+imgId).attr('src','/images/minimise.png');
 	else
@@ -273,6 +273,8 @@ var prPathway = require('./pressures.js');
 var thePathways = [];
 var stepId = 0;
 var selectedPathway;
+var colors = ['blue', 'pink'];
+var arrowColor = 0;
 
 module.exports = {
 	init: init,
@@ -289,6 +291,7 @@ function init(){
 	$('#menu').show();
 	$('#content-area').hide();
 	$('#back-button').hide();
+	arrowColor = 0;
 	buildPathways();
 }
 
@@ -314,29 +317,54 @@ function startPathway(id){
 
 	}, 1000);
 }
-function showStep(stepId){
+function showStep(stepId, changeArrows){
 	var step = selectedPathway.steps[stepId];
-	$('#user-info-container').html($('#user-info-container').html() + getStepInfo(step));
+
+	if (changeArrows)
+		arrowColor++;
+
+	$('#user-info-container').html($('#user-info-container').html() + generateStepContent(step));
 	$('#user-info-container').show();
   	displayButtons(step.buttons, step);
 }
 
-function getStepInfo(step){
+function generateStepContent(step){
 	var divId = "pathway" + selectedPathway.id + "-step" + step.id;
 	var imgId = "img" + selectedPathway.id + "-step" + step.id;
 	var collapse = '';
+	
+	var arrows = generateArrows(step);
+
 	if (step.description)
 		collapse = '<img id="'+ imgId +'" class="collapse" src="/images/maximise.png" '+
 					'onclick="expandDescription(\''+divId + '\',\'' + imgId+'\')"/>';
 
-	return '<div class="information">' + 
-				'<h2>' + step.header + '</h2>' +
-				collapse +
-				'<div class="collapsible-desc" id="'+divId+'">' + step.description + '</div>' +
-				'<div class="step-content">' + step.content + '</div>' +
-			'</div>';
+	var stepInfo = '<div class="information">' + 
+						'<h2>' + step.header + '</h2>' +
+						collapse +
+						'<div class="collapsible-desc" id="'+divId+'">' + step.description + '</div>' +
+						'<div class="step-content">' + step.content + '</div>' +
+					'</div>';
+
+	return arrows + stepInfo;
 }
 
+function generateArrows(step){
+	var arrowsDiv= '<div class="arrows">';
+	if (step.displayArrows){
+		
+		arrowsDiv += '<img class="arrow-img" src="/images/arrow-' + colors[arrowColor] + '.png" />'
+		if (step.doubleArrows && arrowColor===0){
+			arrowsDiv += '<img id="hidden-arrow" class="arrow-img hidden" src="/images/arrow-pink.png" />';
+			setTimeout(function() {
+		      $('#hidden-arrow').show();
+		    }, 2000);
+		}
+	}
+	arrowsDiv+= '</div>'
+
+	return arrowsDiv;
+}
 function displayButtons(option, step){
 	$('#menu-next').off('click');
 	$('#menu-yes').off('click');
@@ -348,7 +376,7 @@ function displayButtons(option, step){
 	}
 	else if (option==1){
 		$('#menu-yes').on('click', {nextStep: step.nextStep[0]}, goToStep);
-		$('#menu-no').on('click', {nextStep: step.nextStep[1]}, goToStep);
+		$('#menu-no').on('click', {nextStep: step.nextStep[1], changeArrows: step.changeArrows}, goToStep);
 		$('#menu-yes').show();
 		$('#menu-no').show();
 		$('#menu-next').hide();
@@ -2518,7 +2546,8 @@ function buildTheoreticalModelPathway(){
 			description: 'This is some example description',
 			content: '',
 			buttons:1,
-			nextStep:[1,2]
+			nextStep:[1,2],
+			changeArrows: true
 		},
 		{
 			id:1,
@@ -2532,6 +2561,7 @@ function buildTheoreticalModelPathway(){
 					'<li>How is it working?</li>'+
 					'<li>Do I need to modify my choice?</li></ul>',
 			buttons:2,
+			displayArrows: true,
 			nextStep:[2]
 		},
 		{
@@ -2543,7 +2573,8 @@ function buildTheoreticalModelPathway(){
 					'<h3>Personal Repertoire</h3>'+
 					'<span>Life experience Skills Background Employment</span>',
 			buttons:2,
-			nextStep:[3]
+			nextStep:[3],
+			displayArrows: true
 		},
 		{
 			id:3,
@@ -2551,6 +2582,8 @@ function buildTheoreticalModelPathway(){
 			description: '',
 			content: '',
 			buttons:2,
+			displayArrows: true,
+			doubleArrows: true,
 			nextStep:[4]
 		},
 		{
@@ -2559,6 +2592,7 @@ function buildTheoreticalModelPathway(){
 			description: '',
 			content: '',
 			buttons:1,
+			displayArrows: true,
 			nextStep:[5,0]
 		},
 		{
@@ -2566,6 +2600,7 @@ function buildTheoreticalModelPathway(){
 			header:'Move on to next task',
 			description: '',
 			content: '',
+			displayArrows: true,
 			buttons:2,
 		}
 		]

@@ -12,7 +12,8 @@ function buildTheoreticalModelPathway(){
 			description: 'This is some example description',
 			content: '',
 			buttons:1,
-			nextStep:[1,2]
+			nextStep:[1,2],
+			changeArrows: true
 		},
 		{
 			id:1,
@@ -26,6 +27,7 @@ function buildTheoreticalModelPathway(){
 					'<li>How is it working?</li>'+
 					'<li>Do I need to modify my choice?</li></ul>',
 			buttons:2,
+			displayArrows: true,
 			nextStep:[2]
 		},
 		{
@@ -37,7 +39,8 @@ function buildTheoreticalModelPathway(){
 					'<h3>Personal Repertoire</h3>'+
 					'<span>Life experience Skills Background Employment</span>',
 			buttons:2,
-			nextStep:[3]
+			nextStep:[3],
+			displayArrows: true
 		},
 		{
 			id:3,
@@ -45,6 +48,8 @@ function buildTheoreticalModelPathway(){
 			description: '',
 			content: '',
 			buttons:2,
+			displayArrows: true,
+			doubleArrows: true,
 			nextStep:[4]
 		},
 		{
@@ -53,6 +58,7 @@ function buildTheoreticalModelPathway(){
 			description: '',
 			content: '',
 			buttons:1,
+			displayArrows: true,
 			nextStep:[5,0]
 		},
 		{
@@ -60,6 +66,7 @@ function buildTheoreticalModelPathway(){
 			header:'Move on to next task',
 			description: '',
 			content: '',
+			displayArrows: true,
 			buttons:2,
 		}
 		]
