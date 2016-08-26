@@ -6,7 +6,7 @@ var prPathway = require('./pressures.js');
 var thePathways = [];
 var stepId = 0;
 var selectedPathway;
-var colors = ['blue', 'pink'];
+var colors = ['blue', 'pink', 'green', 'yellow'];
 var arrowColor = 0;
 
 module.exports = {
